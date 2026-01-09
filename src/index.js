@@ -4,14 +4,14 @@ const bodyparser = require('body-parser');
 const { PORT } = require('./config/serverConfig');
 
 const apiRoutes = require('./routes/index');
-
+const db = require('./models/index');
 const setupAndStartServer = async () => {
     const app = express();
 
     app.use(bodyparser.json());
     app.use(bodyparser.urlencoded({ extended: true }));
 
-    app.use('/api', apiRoutes);
+    // app.use('/api', apiRoutes);
 
     app.listen(PORT, () => {
         if (process.env.DB_SYNC) {
